@@ -1,5 +1,12 @@
 # Upcoming Movies Sample in Swift
+
 Upcoming Movies is a sample ios app built using swift that displays the details of upcoming movies. The project consumes rest api provided by [THE MOVIE DB](https://www.themoviedb.org).
+
+## Motivation
+
+The project demonstrates the use of MVVM (Model-View-ViewModel) pattern for development of native iOS applications. We use MVVM a lot for developing native applications at [CodeToArt](http://codetoart.com/). Following is the visual representation of application architecture.
+
+![MVVM](https://cloud.githubusercontent.com/assets/886763/20639948/f18d0010-b3f7-11e6-823a-6ed1dd45a4a9.png)
 
 ## Getting Started
 
