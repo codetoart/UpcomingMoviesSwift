@@ -1,5 +1,5 @@
 # Upcoming Movies Sample in Swift
-Upcoming Movies is a sample ios app built using swift that displays the details of upcoming movies. The project consumes rest api provided by [THE MOVIE DB]((https://www.themoviedb.org/)).
+Upcoming Movies is a sample ios app built using swift that displays the details of upcoming movies. The project consumes rest api provided by [THE MOVIE DB](https://www.themoviedb.org).
 
 ## Getting Started
 
