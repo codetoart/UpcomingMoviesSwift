@@ -10,9 +10,9 @@ The project demonstrates the use of MVVM (Model-View-ViewModel) pattern for deve
 
 ## Screenshots
 
-![img_4663](https://cloud.githubusercontent.com/assets/886763/20640046/f2abfff2-b3fa-11e6-96f4-eeaac4ced9f9.PNG)
-![img_4664](https://cloud.githubusercontent.com/assets/886763/20640047/0a03fdee-b3fb-11e6-8bab-2f7c8962937d.PNG)
-![img_4665 2](https://cloud.githubusercontent.com/assets/886763/20640054/1fafeff4-b3fb-11e6-9347-f660d467f1f4.PNG)
+![screen1](https://cloud.githubusercontent.com/assets/886763/20640070/ca295042-b3fb-11e6-989a-7f9eb74e8c9f.png)
+![screen2](https://cloud.githubusercontent.com/assets/886763/20640071/ca4d0e4c-b3fb-11e6-8951-e2c37fabcdd7.png)
+![screen3](https://cloud.githubusercontent.com/assets/886763/20640072/ca69fcdc-b3fb-11e6-8d47-9142922a81d1.png)
 
 ## Getting Started
 
