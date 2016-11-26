@@ -8,6 +8,12 @@ The project demonstrates the use of MVVM (Model-View-ViewModel) pattern for deve
 
 ![MVVM](https://cloud.githubusercontent.com/assets/886763/20639948/f18d0010-b3f7-11e6-823a-6ed1dd45a4a9.png)
 
+## Screenshots
+
+![img_4663](https://cloud.githubusercontent.com/assets/886763/20640046/f2abfff2-b3fa-11e6-96f4-eeaac4ced9f9.PNG)
+![img_4664](https://cloud.githubusercontent.com/assets/886763/20640047/0a03fdee-b3fb-11e6-8bab-2f7c8962937d.PNG)
+![img_4665 2](https://cloud.githubusercontent.com/assets/886763/20640054/1fafeff4-b3fb-11e6-9347-f660d467f1f4.PNG)
+
 ## Getting Started
 
 The project uses cocoapods to integrate external libraries. Thus, you will need cocoapods installed to run the project.
