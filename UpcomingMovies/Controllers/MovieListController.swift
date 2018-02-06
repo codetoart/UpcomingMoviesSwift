@@ -13,7 +13,7 @@ class MovieListController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var activityIndicatorView: UIActivityIndicatorView!
     
-    private var movieListViewModel = MovieListViewModel()
+    fileprivate var movieListViewModel = MovieListViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +30,10 @@ class MovieListController: UIViewController {
         self.tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if !self.activityIndicatorView.isAnimating() {
+        if !self.activityIndicatorView.isAnimating {
             self.activityIndicatorView.startAnimating()
         }
         
@@ -45,8 +45,8 @@ class MovieListController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.tableView.layoutMargins = UIEdgeInsetsZero
-        self.tableView.separatorInset = UIEdgeInsetsZero
+        self.tableView.layoutMargins = UIEdgeInsets.zero
+        self.tableView.separatorInset = UIEdgeInsets.zero
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,7 +55,7 @@ class MovieListController: UIViewController {
     }
     
     func updateViews() {
-        if self.activityIndicatorView.isAnimating() {
+        if self.activityIndicatorView.isAnimating {
             self.activityIndicatorView.stopAnimating()
         }
         self.tableView.reloadData()
@@ -71,7 +71,7 @@ class MovieListController: UIViewController {
 }
 
 extension MovieListController: ConfigurationServiceDelegate {
-    func didReceiveConfig(config: Config) {
+    func didReceiveConfig(_ config: Config) {
         AppHelper.saveConfig(config)
         self.movieListViewModel.getMovies()
     }
@@ -79,12 +79,12 @@ extension MovieListController: ConfigurationServiceDelegate {
 
 extension MovieListController: UITableViewDataSource {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.movieListViewModel.movieCount()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let mc = tableView.dequeueReusableCellWithIdentifier("movieCell", forIndexPath: indexPath) as! MovieCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let mc = tableView.dequeueReusableCell(withIdentifier: "movieCell", for: indexPath) as! MovieCell
         let movieCellViewModel = self.movieListViewModel.getMovieCellViewModel(indexPath.row)
         mc.setup(movieCellViewModel)
         
@@ -94,22 +94,22 @@ extension MovieListController: UITableViewDataSource {
 
 extension MovieListController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.movieListViewModel.selectMovieAtIndex(indexPath.row)
-        self.performSegueWithIdentifier("showMovieDetail", sender: self)
+        self.performSegue(withIdentifier: "showMovieDetail", sender: self)
     }
     
-    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        cell.separatorInset = UIEdgeInsetsZero
-        cell.layoutMargins = UIEdgeInsetsZero
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.separatorInset = UIEdgeInsets.zero
+        cell.layoutMargins = UIEdgeInsets.zero
     }
 }
 
 extension MovieListController: UINavigationControllerDelegate {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showMovieDetail" {
-            if let mdc = segue.destinationViewController as? MovieDetailController, selectedMovie = self.movieListViewModel.getSelectedMovie() {
+            if let mdc = segue.destination as? MovieDetailController, let selectedMovie = self.movieListViewModel.getSelectedMovie() {
                 mdc.movieDetailViewModel = MovieDetailViewModel(selectedMovie, movieDetailController: mdc)
             }
         }

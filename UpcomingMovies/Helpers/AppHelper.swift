@@ -11,45 +11,45 @@ import UIKit
 
 class AppHelper {
     
-    class func saveConfig(config: Config) {
-        if let ad = UIApplication.sharedApplication().delegate as? AppDelegate {
+    class func saveConfig(_ config: Config) {
+        if let ad = UIApplication.shared.delegate as? AppDelegate {
             ad.config = config
         }
     }
     
     class func getConfig() -> Config? {
         var config: Config?
-        if let ad = UIApplication.sharedApplication().delegate as? AppDelegate {
+        if let ad = UIApplication.shared.delegate as? AppDelegate {
             config = ad.config
         }
         
         return config
     }
     
-    class func getMovieLargeURLFromPath(path: String) -> NSURL? {
-        var fileURL: NSURL?
-        if let basePath = AppHelper.getConfig()?.imageBaseURLString, largeSize = AppHelper.getConfig()?.largeSizestring {
+    class func getMovieLargeURLFromPath(_ path: String) -> URL? {
+        var fileURL: URL?
+        if let basePath = AppHelper.getConfig()?.imageBaseURLString, let largeSize = AppHelper.getConfig()?.largeSizestring {
             let fullPath = basePath + largeSize + path
-            fileURL = NSURL(string: fullPath)
+            fileURL = URL(string: fullPath)
         }
         
         return fileURL
     }
     
-    class func getMovieThumbURLFromPath(path: String) -> NSURL? {
-        var fileURL: NSURL?
-        if let basePath = AppHelper.getConfig()?.imageBaseURLString, thumbSize = AppHelper.getConfig()?.thumbSizeString {
+    class func getMovieThumbURLFromPath(_ path: String) -> URL? {
+        var fileURL: URL?
+        if let basePath = AppHelper.getConfig()?.imageBaseURLString, let thumbSize = AppHelper.getConfig()?.thumbSizeString {
             let fullPath = basePath + thumbSize + path
-            fileURL = NSURL(string: fullPath)
+            fileURL = URL(string: fullPath)
         }
         
         return fileURL
     }
     
-    class func dateFromServerString(dateStr: String) -> NSDate? {
-        let df = NSDateFormatter()
+    class func dateFromServerString(_ dateStr: String) -> Date? {
+        let df = DateFormatter()
         df.dateFormat = "yyyy-MM-dd"
         
-        return df.dateFromString(dateStr)
+        return df.date(from: dateStr)
     }
 }

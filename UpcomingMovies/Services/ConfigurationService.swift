@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol ConfigurationServiceDelegate: class {
-    func didReceiveConfig(config: Config)
+    func didReceiveConfig(_ config: Config)
 }
 
 struct ConfigurationService {
@@ -19,19 +19,19 @@ struct ConfigurationService {
     weak var delegate: ConfigurationServiceDelegate?
     
     func fetchConfig() {
-        if let configURL = NSURL(string:  NetworkHelper.baseURLString + "/configuration") {
+        if let configURL = URL(string:  NetworkHelper.baseURLString + "/configuration") {
             let req = Alamofire.request(
-                .GET,
                 configURL,
+                method: .get,
                 parameters:[
                     "api_key": NetworkHelper.apiKey
                 ],
                 headers: nil
-            ).response { (request, response, data, error) in
+            ).response { (response) in
                     
-                let json = JSON(data: data!)
+                let json = JSON(data: response.data!)
                 if let imagesDict = json["images"].dictionaryObject {
-                    let config = Config(imagesDict)
+                    let config = Config(imagesDict as Dictionary<String, AnyObject?>)
                     self.delegate?.didReceiveConfig(config)
                 }
                     

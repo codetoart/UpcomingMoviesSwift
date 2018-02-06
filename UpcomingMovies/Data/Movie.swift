@@ -15,12 +15,12 @@ struct Movie {
     var originalTitle: String?
     var originalLanguage: String?
     var overview: String?
-    var releaseDate: NSDate?
+    var releaseDate: Date?
     var popularity: Float?
     var voteCount: Int?
     var voteAvg: Float?
     var adult: Bool = false
-    var posterThumbURL: NSURL?
+    var posterThumbURL: URL?
 //    var backdropURL: NSURL?
     
     init(_ movieDict: Dictionary<String, AnyObject?>) {
@@ -39,7 +39,7 @@ struct Movie {
         if let overview = movieDict["overview"] as? String {
             self.overview = overview
         }
-        if let releaseDateStr = movieDict["release_date"] as? String, releaseDate = AppHelper.dateFromServerString(releaseDateStr) {
+        if let releaseDateStr = movieDict["release_date"] as? String, let releaseDate = AppHelper.dateFromServerString(releaseDateStr) {
             self.releaseDate = releaseDate
         }
         if let popularity = movieDict["popularity"] as? Float {
@@ -54,7 +54,7 @@ struct Movie {
         if let adult = movieDict["adult"] as? Bool {
             self.adult = adult
         }
-        if let posterPath = movieDict["poster_path"] as? String, posterURL = AppHelper.getMovieThumbURLFromPath(posterPath) {
+        if let posterPath = movieDict["poster_path"] as? String, let posterURL = AppHelper.getMovieThumbURLFromPath(posterPath) {
             self.posterThumbURL = posterURL
         }
 //        if let backdropPath = movieDict["backdrop_path"] as? String, backdropURL = AppHelper.getURLFromPath(backdropPath) {

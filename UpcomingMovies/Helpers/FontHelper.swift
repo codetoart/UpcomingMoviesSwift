@@ -11,19 +11,19 @@ import UIKit
 
 extension UIFont {
     
-    class func regularFont(size: CGFloat) -> UIFont {
+    class func regularFont(_ size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-Regular", size: size)!
     }
     
-    class func mediumFont(size: CGFloat) -> UIFont {
+    class func mediumFont(_ size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-Medium", size: size)!
     }
     
-    class func demiBoldFont(size: CGFloat) -> UIFont {
+    class func demiBoldFont(_ size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-DemiBold", size: size)!
     }
     
-    class func boldFont(size: CGFloat) -> UIFont {
+    class func boldFont(_ size: CGFloat) -> UIFont {
         return UIFont(name: "AvenirNext-Bold", size: size)!
     }
     

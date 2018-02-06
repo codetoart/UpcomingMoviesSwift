@@ -12,8 +12,8 @@ class MovieListViewModel {
     
     weak var vc: MovieListController?
     
-    private var movies = Array<Movie>()
-    private var selectedMovie: Movie?
+    fileprivate var movies = Array<Movie>()
+    fileprivate var selectedMovie: Movie?
     
     func getMovies() {
         let ms = MovieService()
@@ -25,12 +25,12 @@ class MovieListViewModel {
         return self.movies.count
     }
     
-    func getMovieCellViewModel(index: Int) -> MovieCellViewModel {
+    func getMovieCellViewModel(_ index: Int) -> MovieCellViewModel {
         let movie = self.movies[index]
         return MovieCellViewModel(movie)
     }
     
-    func selectMovieAtIndex(index: Int) {
+    func selectMovieAtIndex(_ index: Int) {
         self.selectedMovie = self.movies[index]
     }
     
@@ -41,12 +41,12 @@ class MovieListViewModel {
 
 extension MovieListViewModel: MovieServiceDelegate {
     
-    func didReceiveMovies(movies: Array<Movie>) {
+    func didReceiveMovies(_ movies: Array<Movie>) {
         self.movies = movies
         self.vc?.updateViews()
     }
     
-    func didReceiveImages(backdropImages backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>) {
+    func didReceiveImages(backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>) {
         
     }
     
