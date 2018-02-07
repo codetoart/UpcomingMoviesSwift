@@ -17,7 +17,7 @@ class TextCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -30,7 +30,7 @@ class TextCell: UITableViewCell {
         self.layoutIfNeeded()
     }
     
-    func configure(text: String?, font: UIFont = UIFont.regularFont(15)) {
+    func configure(_ text: String?, font: UIFont = UIFont.regularFont(15)) {
         if let txt = text {
             self.contentLabel.text = txt
         } else {

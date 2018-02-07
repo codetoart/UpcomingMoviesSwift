@@ -21,16 +21,16 @@ class MovieCellViewModel {
         return self.movie?.title
     }
     
-    func getImageURL() -> NSURL? {
-        return self.movie?.posterThumbURL
+    func getImageURL() -> URL? {
+        return self.movie?.posterThumbURL as URL?
     }
     
     func formattedReleaseDate() -> String {
         var rdString = ""
         if let rd = self.movie?.releaseDate {
-            let df = NSDateFormatter()
+            let df = DateFormatter()
             df.dateFormat = "dd MMM, yyyy"
-            rdString = df.stringFromDate(rd)
+            rdString = df.string(from: rd as Date)
         }
         
         return rdString

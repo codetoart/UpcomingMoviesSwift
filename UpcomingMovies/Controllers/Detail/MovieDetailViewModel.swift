@@ -12,7 +12,7 @@ import UIKit
 class MovieDetailViewModel {
     
     var movie: Movie?
-    var images: Array<NSURL>?
+    var images: Array<URL>?
     
     weak var movieDetailController: MovieDetailController?
     
@@ -37,9 +37,9 @@ class MovieDetailViewModel {
     func formattedReleaseDate() -> String {
         var rdString = ""
         if let rd = self.movie?.releaseDate {
-            let df = NSDateFormatter()
+            let df = DateFormatter()
             df.dateFormat = "dd MMM, yyyy"
-            rdString = df.stringFromDate(rd)
+            rdString = df.string(from: rd as Date)
         }
         
         return rdString
@@ -60,11 +60,11 @@ class MovieDetailViewModel {
 }
 
 extension MovieDetailViewModel: MovieServiceDelegate {
-    func didReceiveMovies(movies: Array<Movie>) {
+    func didReceiveMovies(_ movies: Array<Movie>) {
         
     }
     
-    func didReceiveImages(backdropImages backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>) {
+    func didReceiveImages(backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>) {
         self.images = posterImages.map{ AppHelper.getMovieLargeURLFromPath($0.path!)! }
         self.movieDetailController?.displayImages()
     }

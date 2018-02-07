@@ -23,15 +23,15 @@ class MovieCell: UITableViewCell {
         self.movieImageView.clipsToBounds = true
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
     
-    func setup(mcvm: MovieCellViewModel) {
+    func setup(_ mcvm: MovieCellViewModel) {
         self.movieImageView.showActivityIndicator = false
-        self.movieImageView.imageURL = mcvm.getImageURL()
+        self.movieImageView.imageURL = mcvm.getImageURL() as URL?
         self.movieTitleLabel.text = mcvm.getMovieTitle()
         self.releaseDateLabel.text = mcvm.formattedReleaseDate()
     }

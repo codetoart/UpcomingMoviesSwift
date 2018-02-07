@@ -11,8 +11,8 @@ import Alamofire
 import SwiftyJSON
 
 protocol MovieServiceDelegate: class {
-    func didReceiveMovies(movies: Array<Movie>)
-    func didReceiveImages(backdropImages backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>)
+    func didReceiveMovies(_ movies: Array<Movie>)
+    func didReceiveImages(backdropImages: Array<MovieImage>, posterImages: Array<MovieImage>)
 }
 
 class MovieService {
@@ -20,17 +20,17 @@ class MovieService {
     weak var delegate: MovieServiceDelegate?
     
     func fetchUpcomingMovies() {
-        if let upcomingMovieURL = NSURL(string:  NetworkHelper.baseURLString + "/movie/upcoming") {
+        if let upcomingMovieURL = URL(string:  NetworkHelper.baseURLString + "/movie/upcoming") {
             let req = Alamofire.request(
-                .GET,
                 upcomingMovieURL,
+                method: .get,
                 parameters:[
                     "api_key": NetworkHelper.apiKey
                 ],
                 headers: nil
-                ).response { (request, response, data, error) in
+                ).response { (response) in
                     
-                    let json = JSON(data: data!)
+                    let json = JSON(data: response.data!)
                     if let movieResults = json["results"].arrayObject as? Array<Dictionary<String, AnyObject>> {
                         let movies = movieResults.map({Movie($0)})
                         self.delegate?.didReceiveMovies(movies)
@@ -43,21 +43,21 @@ class MovieService {
         }
     }
     
-    func fetchMovieImages(movieId: String) {
-        if let movieImagesURL = NSURL(string:  NetworkHelper.baseURLString + "/movie/\(movieId)/images") {
+    func fetchMovieImages(_ movieId: String) {
+        if let movieImagesURL = URL(string:  NetworkHelper.baseURLString + "/movie/\(movieId)/images") {
             let req = Alamofire.request(
-                .GET,
                 movieImagesURL,
+                method: .get,
                 parameters:[
                     "api_key": NetworkHelper.apiKey
                 ],
                 headers: nil
-            ).response { (request, response, data, error) in
+            ).response { (response) in
                     
                 var backdropImages = Array<MovieImage>()
                 var posterImages = Array<MovieImage>()
                 
-                let json = JSON(data: data!)
+                let json = JSON(data: response.data!)
                 if let backdropImageList = json["backdrops"].arrayObject as? Array<Dictionary<String, AnyObject>> {
                     for movieImageDict in backdropImageList{
                         backdropImages.append(MovieImage(movieImageDict))

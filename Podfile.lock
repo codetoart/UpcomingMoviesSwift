@@ -1,38 +1,38 @@
 PODS:
-  - Alamofire (3.5.1)
+  - Alamofire (4.4.0)
   - AsyncImageView (1.6)
   - HCSStarRatingView (1.4.5)
-  - ImageSliderView (0.0.1):
+  - ImageSliderView (1.1.0):
     - AsyncImageView (= 1.6)
-    - SnapKit (= 0.22.0)
-  - SnapKit (0.22.0)
-  - SwiftyJSON (2.4.0)
+    - SnapKit (= 3.2.0)
+  - SnapKit (3.2.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.5.0)
+  - Alamofire (~> 4.4.0)
   - AsyncImageView (= 1.6)
   - HCSStarRatingView (~> 1.4.3)
-  - ImageSliderView (from `git@github.com:codetoart/ImageSliderView.git`)
-  - SnapKit (= 0.22.0)
-  - SwiftyJSON (~> 2.4.0)
+  - ImageSliderView (from `https://github.com/codetoart/ImageSliderView.git`)
+  - SnapKit (= 3.2.0)
+  - SwiftyJSON (~> 3.1.4)
 
 EXTERNAL SOURCES:
   ImageSliderView:
-    :git: git@github.com:codetoart/ImageSliderView.git
+    :git: https://github.com/codetoart/ImageSliderView.git
 
 CHECKOUT OPTIONS:
   ImageSliderView:
-    :commit: a5f76339f566e0f7cc1f29fcd589e191fc018e35
-    :git: git@github.com:codetoart/ImageSliderView.git
+    :commit: 66116e91a7df205c474e251e006508d20c4e2a7f
+    :git: https://github.com/codetoart/ImageSliderView.git
 
 SPEC CHECKSUMS:
-  Alamofire: 0dfba1184a543e2aa160f4e39cac4e8aba48d223
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   AsyncImageView: 416e99402e5b1f20571de70ad619ced90f56a7d9
   HCSStarRatingView: bff3f89314d3b5013ce826ea11897d3129ff6b8c
-  ImageSliderView: 73ed12b9ed552eb9f94c40007bb89b0aed610f36
-  SnapKit: 0dd2fd157330f1ea11fd84da13e6be8a7a22bae0
-  SwiftyJSON: 96918c1bf505efa50c4f72957018dd3452090c9c
+  ImageSliderView: ea67273d4e3cc7f0d3889732b4fada36959dc8b8
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 635bcafa80d35b6d825fc1cd3711f22c64e9807e
+PODFILE CHECKSUM: 48245f91a944b57854728b4d8f368574cc7c4ed0
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.4.0
