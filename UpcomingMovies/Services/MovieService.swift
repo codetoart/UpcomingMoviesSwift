@@ -16,9 +16,9 @@ protocol MovieServiceDelegate: class {
 }
 
 class MovieService {
-    
+
     weak var delegate: MovieServiceDelegate?
-    
+
     func fetchUpcomingMovies() {
         if let upcomingMovieURL = URL(string:  NetworkHelper.baseURLString + "/movie/upcoming") {
             let req = Alamofire.request(
@@ -29,20 +29,20 @@ class MovieService {
                 ],
                 headers: nil
                 ).response { (response) in
-                    
-                    let json = JSON(data: response.data!)
+
+                    let json = try! JSON(data: response.data!)
                     if let movieResults = json["results"].arrayObject as? Array<Dictionary<String, AnyObject>> {
                         let movies = movieResults.map({Movie($0)})
                         self.delegate?.didReceiveMovies(movies)
                     }
-                    
+
             }
             if NetworkHelper.printNetworkRequest() {
                 print(req.debugDescription)
             }
         }
     }
-    
+
     func fetchMovieImages(_ movieId: String) {
         if let movieImagesURL = URL(string:  NetworkHelper.baseURLString + "/movie/\(movieId)/images") {
             let req = Alamofire.request(
@@ -53,11 +53,11 @@ class MovieService {
                 ],
                 headers: nil
             ).response { (response) in
-                    
+
                 var backdropImages = Array<MovieImage>()
                 var posterImages = Array<MovieImage>()
-                
-                let json = JSON(data: response.data!)
+
+                let json = try! JSON(data: response.data!)
                 if let backdropImageList = json["backdrops"].arrayObject as? Array<Dictionary<String, AnyObject>> {
                     for movieImageDict in backdropImageList{
                         backdropImages.append(MovieImage(movieImageDict))
@@ -69,7 +69,7 @@ class MovieService {
                     }
                 }
                 self.delegate?.didReceiveImages(backdropImages: backdropImages, posterImages: posterImages)
-                    
+
             }
             if NetworkHelper.printNetworkRequest() {
                 print(req.debugDescription)

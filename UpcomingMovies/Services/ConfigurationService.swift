@@ -15,9 +15,9 @@ protocol ConfigurationServiceDelegate: class {
 }
 
 struct ConfigurationService {
-    
+
     weak var delegate: ConfigurationServiceDelegate?
-    
+
     func fetchConfig() {
         if let configURL = URL(string:  NetworkHelper.baseURLString + "/configuration") {
             let req = Alamofire.request(
@@ -28,13 +28,13 @@ struct ConfigurationService {
                 ],
                 headers: nil
             ).response { (response) in
-                    
-                let json = JSON(data: response.data!)
+
+                let json = try! JSON(data: response.data!)
                 if let imagesDict = json["images"].dictionaryObject {
                     let config = Config(imagesDict as Dictionary<String, AnyObject?>)
                     self.delegate?.didReceiveConfig(config)
                 }
-                    
+
             }
             if NetworkHelper.printNetworkRequest() {
                 print(req.debugDescription)

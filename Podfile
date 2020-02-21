@@ -1,24 +1,15 @@
-
-use_frameworks!
-
-platform :ios, '8.0'
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '10.0'
 
 target 'UpcomingMovies' do
-
-	pod 'Alamofire', '~> 4.4.0'
-	pod 'SwiftyJSON', '~> 3.1.4'
-	pod 'AsyncImageView', '1.6'
-	pod 'HCSStarRatingView', '~> 1.4.3'
-	pod 'SnapKit', '3.2.0'
-	pod 'ImageSliderView', :git => 'https://github.com/codetoart/ImageSliderView.git'
-
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = '3.0'
-    end
-  end
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  # Pods for UpcomingMovies
+        pod 'Alamofire'
+	pod 'SwiftyJSON',  '~> 4.0'
+	pod 'AsyncImageView'
+	pod 'HCSStarRatingView'
+	pod 'SnapKit', '~> 4.0.0'
+	
 end
 
