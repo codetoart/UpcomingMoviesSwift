@@ -21,14 +21,14 @@ Download/Clone the project, run 'pod install'. Open the .xcworkspace file, build
 
 ### Prerequisites
 
-* [Swift 3.0](https://swift.org/) - Swift version used
-* [Xcode 8](https://developer.apple.com/xcode/) - Xcode version used
+* [Swift 5.0](https://swift.org/) - Swift version used
+* [Xcode 11.3.1](https://developer.apple.com/xcode/) - Xcode version used
 
 
 ## Built With
 
-* [Swift 3.0](https://swift.org/) - Swift version used
-* [Xcode 8](https://developer.apple.com/xcode/) - Xcode version used
+* [Swift 5.0](https://swift.org/) - Swift version used
+* [Xcode 11.3.1](https://developer.apple.com/xcode/) - Xcode version used
 
 ## Versioning
 
